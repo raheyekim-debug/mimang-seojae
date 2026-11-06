@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#f4efe5" />
+<title>미망서재 — 당신의 이야기가 한 편의 시가 되도록</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+:root{--paper:#f4efe5;--paper2:#ebe3d5;--ink:#29251f;--muted:#817768;--brown:#765d45;--line:#d7cbbb;--red:#8b493c;--white:#fbf8f1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Noto Serif KR',serif;letter-spacing:-.035em}button,input,textarea{font:inherit}button{cursor:pointer}.topline{height:5px;background:var(--brown)}header{height:82px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(6vw,24px);background:rgba(244,239,229,.94);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px)}.brand{font-family:'Gowun Batang',serif;font-size:25px;letter-spacing:.12em;font-weight:700}.brand small{display:block;font-family:serif;font-size:9px;letter-spacing:.28em;color:var(--muted);text-align:center;margin-top:2px}.nav{display:flex;gap:30px}.nav a{font-size:13px;color:var(--muted);text-decoration:none}.nav a:hover{color:var(--red)}.hero{min-height:550px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;max-width:1160px;margin:auto;padding:75px 34px 85px;gap:55px}.eyebrow{font-size:11px;letter-spacing:.3em;color:var(--red);margin-bottom:24px}.hero h1{font-family:'Gowun Batang',serif;font-size:clamp(34px,5vw,57px);font-weight:400;line-height:1.55;letter-spacing:-.07em;margin:0 0 23px}.hero h1 em{font-style:normal;color:var(--red)}.hero p{color:var(--muted);font-size:14px;line-height:2.1;margin:0 0 34px}.primary{border:1px solid var(--ink);background:var(--ink);color:var(--paper);padding:14px 25px;font-size:13px;letter-spacing:.05em;transition:.2s}.primary:hover{background:var(--red);border-color:var(--red)}.hero-art{height:360px;display:flex;align-items:center;justify-content:center;position:relative}.book{width:230px;height:310px;background:#e5d9c7;border:1px solid #c9b9a4;box-shadow:17px 18px 0 #d8cbb9,0 25px 45px #57463320;transform:rotate(4deg);display:flex;align-items:center;justify-content:center;text-align:center;position:relative}.book:before{content:'';position:absolute;left:14px;top:0;bottom:0;border-left:1px solid #c7b59f}.book-inner{border:1px solid #bba88f;width:82%;height:86%;display:flex;flex-direction:column;align-items:center;justify-content:center}.book .seal{font-size:26px;color:var(--red);margin-bottom:26px}.book strong{font-family:'Gowun Batang',serif;font-size:27px;letter-spacing:.18em;font-weight:400}.book span{font-size:9px;letter-spacing:.2em;color:var(--muted);margin-top:13px}.book .rule{width:35px;border-top:1px solid var(--brown);margin:22px}.floating{position:absolute;font-family:'Gowun Batang',serif;color:#a08d76;font-size:13px;line-height:2;writing-mode:vertical-rl}.floating.one{right:5%;top:12%}.floating.two{left:2%;bottom:12%}.section{padding:88px 24px;border-top:1px solid var(--line)}.section-inner{max-width:900px;margin:auto}.section-head{text-align:center;margin-bottom:48px}.section-head .eyebrow{margin-bottom:13px}.section-head h2{font-family:'Gowun Batang',serif;font-size:31px;font-weight:400;margin:0 0 12px}.section-head p{font-size:13px;color:var(--muted);line-height:1.9}.write-wrap{background:var(--white);border:1px solid var(--line);padding:clamp(22px,5vw,48px);box-shadow:0 12px 35px #4a392010}.field-label{font-size:13px;font-weight:600;margin:0 0 14px;display:block}.categories{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:32px}.chip{border:1px solid var(--line);background:transparent;padding:10px 17px;border-radius:30px;font-size:12px;color:var(--muted);transition:.2s}.chip.active,.chip:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}textarea{width:100%;min-height:155px;resize:vertical;border:1px solid var(--line);background:#fffdf8;padding:18px;font-size:13px;line-height:2;color:var(--ink);outline:none}textarea:focus,input:focus{border-color:var(--brown)}textarea::placeholder{color:#b2a696}.hint{font-size:11px;color:#9a8e80;text-align:right;margin:8px 0 26px}.style-row{display:flex;gap:10px;align-items:center;margin-bottom:28px;flex-wrap:wrap}.style-row .field-label{margin:0 7px 0 0}.style-select{border:1px solid var(--line);background:transparent;padding:9px 12px;color:var(--muted);font-size:12px}.create{width:100%;padding:16px}.result{display:none;margin-top:28px;background:#eee6d9;border:1px solid #d8cbbb;padding:clamp(24px,5vw,48px);text-align:center;position:relative}.result.show{display:block;animation:appear .6s ease}@keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.result:before{content:'MIMANG SEOJAE';font:9px Georgia,serif;letter-spacing:.25em;color:#a18e78}.result h3{font-family:'Gowun Batang',serif;font-size:22px;font-weight:400;margin:19px 0 25px}.poem{font-family:'Gowun Batang',serif;white-space:pre-line;font-size:15px;line-height:2.35;color:#443b31}.result-actions{display:flex;justify-content:center;gap:10px;margin-top:30px;flex-wrap:wrap}.outline{border:1px solid var(--brown);background:transparent;color:var(--brown);padding:11px 17px;font-size:12px}.outline:hover{background:var(--brown);color:white}.note{font-size:11px;color:#938675;line-height:1.8;margin-top:18px}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.how-card{border-top:1px solid var(--brown);padding:22px 8px}.how-card .num{font:italic 22px Georgia;color:var(--red)}.how-card h3{font-family:'Gowun Batang',serif;font-size:18px;font-weight:400;margin:14px 0 10px}.how-card p{font-size:12px;color:var(--muted);line-height:1.9;margin:0}.postcard{background:#e9dfd0;padding:45px 30px;text-align:center;position:relative;overflow:hidden}.postcard:before,.postcard:after{content:'✳';position:absolute;color:#c8b69e;font-size:70px;opacity:.5}.postcard:before{left:7%;top:12%}.postcard:after{right:7%;bottom:8%}.postcard h2{font-family:'Gowun Batang',serif;font-weight:400;font-size:27px;margin:0 0 14px}.postcard p{font-size:12px;color:var(--muted);line-height:2;margin:0 0 23px}.postcard .outline{position:relative;z-index:1}footer{padding:35px 24px 45px;text-align:center;border-top:1px solid var(--line);color:#9a8e80;font-size:10px;line-height:2.1}footer strong{display:block;font-family:'Gowun Batang',serif;font-size:19px;letter-spacing:.15em;color:var(--brown);font-weight:400;margin-bottom:10px}.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:12px 20px;font-size:12px;opacity:0;pointer-events:none;transition:.25s;z-index:30}.toast.show{opacity:1}
+@media(max-width:720px){header{height:70px;padding:0 20px}.nav{gap:14px}.nav a{font-size:11px}.brand{font-size:21px}.hero{grid-template-columns:1fr;padding:65px 25px 50px;gap:15px;text-align:center}.hero p{font-size:13px}.hero-art{height:300px}.book{transform:rotate(3deg) scale(.86)}.floating.one{right:8%}.floating.two{left:8%}.section{padding:65px 18px}.section-head h2{font-size:26px}.how-grid{grid-template-columns:1fr;gap:10px}.how-card{padding:15px 5px}.how-card h3{margin:7px 0}.postcard:before{left:-20px}.postcard:after{right:-20px}}
+</style>
+</head>
+<body>
+<div class="topline"></div>
+<header>
+  <a href="#home" style="text-decoration:none;color:inherit"><div class="brand">미망서재<small>未忘書齋 · MIMANG LIBRARY</small></div></a>
+  <nav class="nav"><a href="#about">서재 소개</a><a href="#create">시 만들기</a><a href="#postcard">작품 소장</a></nav>
+</header>
+<main id="home">
+<section class="hero">
+  <div>
+    <div class="eyebrow">A POEM FROM YOUR STORY</div>
+    <h1>당신의 이야기가<br><em>한 편의 시</em>가 되도록.</h1>
+    <p>차마 꺼내지 못했던 마음도,<br>오래도록 간직하고 싶은 순간도.<br>당신의 이야기를 문장으로 엮어 드립니다.</p>
+    <button class="primary" onclick="document.querySelector('#create').scrollIntoView({behavior:'smooth'})">나만의 시 만들기　↗</button>
+  </div>
+  <div class="hero-art" aria-label="미망서재의 책 표지 일러스트">
+    <div class="floating one">잊지 않으려 적어 둔 마음</div><div class="floating two">오래 머무는 문장들</div>
+    <div class="book"><div class="book-inner"><div class="seal">✳</div><strong>미망서재</strong><span>당신의 이야기를 위한 작은 서재</span><div class="rule"></div><span>EST. 2026</span></div></div>
+  </div>
+</section>
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-head"><div class="eyebrow">ABOUT MIMANG</div><h2>잊지 않기 위해, 문장으로 남깁니다.</h2><p>미망(未忘)은 아직 잊지 못했다는 뜻입니다.<br>당신의 마음이 머물렀던 순간을 한 편의 시로 기록합니다.</p></div>
+    <div class="how-grid">
+      <article class="how-card"><div class="num">01</div><h3>마음을 들려주세요</h3><p>그리움, 사랑, 우정, 가족. 어떤 이야기든 괜찮습니다. 편안하게 적어 주세요.</p></article>
+      <article class="how-card"><div class="num">02</div><h3>한 편의 시가 됩니다</h3><p>당신이 들려준 이야기에서 감정과 장면을 골라 시의 형태로 엮습니다.</p></article>
+      <article class="how-card"><div class="num">03</div><h3>오래도록 간직하세요</h3><p>마음에 드는 작품은 엽서로 만들어 책상 위나 소중한 사람에게 전할 수 있습니다.</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="create">
+  <div class="section-inner">
+    <div class="section-head"><div class="eyebrow">YOUR OWN POEM</div><h2>나만의 시 만들기</h2><p>당신의 이야기를 들려주세요. 그 마음에 어울리는 문장을 시작해 볼게요.</p></div>
+    <div class="write-wrap">
+      <label class="field-label">01. 어떤 마음을 담고 싶나요?</label>
+      <div class="categories" id="categories">
+        <button class="chip active" data-category="그리움">그리움</button><button class="chip" data-category="사랑">사랑</button><button class="chip" data-category="우정">우정</button><button class="chip" data-category="가족">가족</button><button class="chip" data-category="위로">위로</button><button class="chip" data-category="추억">추억</button>
+      </div>
+      <label class="field-label" for="story">02. 당신의 이야기를 들려주세요.</label>
+      <textarea id="story" maxlength="500" placeholder="예) 오래전 함께 걷던 골목이 아직도 기억나요. 다시 만날 수 있을지 모르지만, 그때의 따뜻한 마음만은 잊고 싶지 않아요."></textarea>
+      <div class="hint"><span id="count">0</span> / 500자</div><p class="note" style="text-align:left">개인정보(실명, 전화번호, 주소 등)는 입력하지 마세요. 사연은 시 생성을 위해 AI 서비스로 전달되며 이 웹사이트에는 저장되지 않습니다.</p>
+      <div class="style-row"><span class="field-label">03. 시의 분위기</span><select class="style-select" id="style"><option value="고전적이고 서정적인">고전적이고 서정적인</option><option value="담백하고 짧은">담백하고 짧은</option><option value="깊고 사색적인">깊고 사색적인</option><option value="따뜻하고 다정한">따뜻하고 다정한</option></select></div>
+      <button class="primary create" id="makePoem">이야기를 시로 엮기　✳</button>
+      <div class="result" id="result"><div id="poemCategory" class="eyebrow" style="margin:18px 0 0"></div><h3 id="poemTitle"></h3><div class="poem" id="poemText"></div><div class="result-actions"><button class="outline" id="copyPoem">시 복사하기</button><button class="outline" id="savePoem">작품 저장하기</button><button class="outline" onclick="document.querySelector('#postcard').scrollIntoView({behavior:'smooth'})">엽서로 소장하기 ↗</button></div><div class="note">AI가 사연을 바탕으로 새롭게 작성한 작품입니다. 마음에 들지 않으면 분위기를 바꾸어 다시 만들어 보세요.</div></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="postcard">
+  <div class="section-inner"><div class="postcard"><div class="eyebrow">KEEP YOUR WORDS</div><h2>마음에 남은 문장을,<br>손에 잡히는 기억으로.</h2><p>당신만의 시를 종이 위에 담아 오래 간직할 수 있도록.<br>미망서재의 시 엽서는 준비 중입니다.</p><button class="outline" onclick="showToast('엽서 제작 및 주문 기능은 준비 중입니다.')">엽서 소장 안내</button></div></div>
+</section>
+</main>
+<footer><strong>미망서재</strong>未忘書齋 · MIMANG LIBRARY<br>당신의 이야기가 한 편의 시가 되도록.<br>© 2026 MIMANG LIBRARY. ALL RIGHTS RESERVED.</footer>
+<div class="toast" id="toast"></div>
+<script>
+let category='그리움';
+const $=s=>document.querySelector(s);
+$('#categories').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');category=b.dataset.category;});
+$('#story').addEventListener('input',()=>$('#count').textContent=$('#story').value.length);
+$('#makePoem').addEventListener('click', async()=>{
+ const story=$('#story').value.trim();
+ if(story.length<5){showToast('이야기를 조금만 더 들려주세요.');$('#story').focus();return;}
+ const btn=$('#makePoem'); btn.disabled=true; btn.textContent='마음을 문장으로 엮고 있어요…';
+ try {
+   const res=await fetch('/api/poem',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({category,story,tone:$('#style').value})});
+   const data=await res.json();
+   if(!res.ok) throw new Error(data.error || '시를 만들지 못했어요. 잠시 후 다시 시도해 주세요.');
+   $('#poemCategory').textContent=category+'의 기록';
+   $('#poemTitle').textContent=data.title;
+   $('#poemText').textContent=data.poem;
+   $('#result').classList.add('show');
+   $('#result').scrollIntoView({behavior:'smooth',block:'center'});
+ } catch(err) { showToast(err.message || '연결에 실패했어요. 잠시 후 다시 시도해 주세요.'); }
+ finally { btn.disabled=false; btn.textContent='이야기를 시로 엮기　✳'; }
+});
+function poemAll(){return `미망서재 · ${$('#poemTitle').textContent}\n\n${$('#poemText').textContent}`}
+$('#copyPoem').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(poemAll());showToast('시를 복사했어요.')}catch(e){showToast('복사가 지원되지 않는 환경입니다.')}});
+$('#savePoem').addEventListener('click',()=>{const blob=new Blob([poemAll()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='미망서재_나의시.txt';a.click();URL.revokeObjectURL(a.href);showToast('작품 파일을 저장했어요.');});
+let toastTimer;function showToast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+</script>
+</body>
+</html>
