@@ -36,7 +36,10 @@ export default async function handler(req, res) {
         model,
         max_output_tokens: 500,
         instructions: `너는 한국어 문학 브랜드 '미망서재'의 시 창작자다. 사용자의 사연을 바탕으로 독창적인 한국어 시를 쓴다. 선택한 분위기: ${tone}. 감정 카테고리: ${category}. 상투적인 표현을 피하고 구체적인 장면과 자연스러운 한국어를 사용한다. 사용자가 말하지 않은 사실이나 관계를 지어내지 않는다. 위험하거나 노골적인 내용을 미화하지 않는다. 시 제목과 본문만 다음 JSON 형식으로 반환한다: {"title":"제목","poem":"시 본문"}.`,
-        input: story,
+        input: `다음 사연을 바탕으로 JSON 형식으로 제목과 시 본문을 작성해 주세요.
+
+사연:
+${story}`,
         text: { format: { type: 'json_object' } }
       })
     });
