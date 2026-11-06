@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     });
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
-      console.error('OpenAI API error', response.status, err.error?.code || 'unknown');
+      console.error('OpenAI API error', response.status, JSON.stringify(err));
       return res.status(502).json({ error: 'AI 연결에 문제가 생겼어요. 잠시 후 다시 시도해 주세요.' });
     }
     const data = await response.json();
