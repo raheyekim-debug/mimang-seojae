@@ -48,12 +48,36 @@ ${story}`,
       console.error('OpenAI API error', response.status, JSON.stringify(err));
       return res.status(502).json({ error: 'AI 연결에 문제가 생겼어요. 잠시 후 다시 시도해 주세요.' });
     }
-    const data = await response.json();
-    const output = data.output_text || '';
-    let poemData;
-    try { poemData = JSON.parse(output); } catch { throw new Error('invalid_model_output'); }
-    if (typeof poemData.title !== 'string' || typeof poemData.poem !== 'string') throw new Error('invalid_model_output');
-    return res.status(200).json({ title: poemData.title.slice(0, 60), poem: poemData.poem.slice(0, 2500) });
+const data = await response.json();
+
+const output = typeof data.output_text === 'string'
+  ? data.output_text
+  : (data.output || [])
+      .flatMap(item => item.content || [])
+      .filter(part => part.type === 'output_text')
+      .map(part => part.text)
+      .join('');
+
+let poemData;
+
+try {
+  poemData = JSON.parse(output);
+} catch {
+  console.error('Invalid model output:', output.slice(0, 500));
+  throw new Error('invalid_model_output');
+}
+
+if (
+  typeof poemData.title !== 'string' ||
+  typeof poemData.poem !== 'string'
+) {
+  throw new Error('invalid_model_output');
+}
+
+return res.status(200).json({
+  title: poemData.title.slice(0, 60),
+  poem: poemData.poem.slice(0, 2500)
+});
   } catch (error) {
     console.error('Poem endpoint error', error.message);
     return res.status(503).json({ error: '현재 시를 만들 수 없어요. 잠시 후 다시 시도해 주세요.' });
