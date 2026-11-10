@@ -616,45 +616,32 @@ footer strong {
     min-height: 320px;
   }
 }
+  /* 원본 미망서재 디자인 이미지 */
+.hero-image-link {
+  display: block;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  line-height: 0;
+  background: #783A32;
+}
+
+.hero-image-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 </style>
 </head>
 <body>
-<div class="hero-art">
-  <img src="/mimang-library-hero.jpg"
-       alt="미망서재의 토끼 우편배달부와 오래된 서재">
-</div>
-    <div class="eyebrow">A POEM FROM YOUR STORY</div>
-    <h1>당신의 이야기가<br><em>한 편의 시</em>가 되도록.</h1>
-    <p>차마 꺼내지 못했던 마음도,<br>오래도록 간직하고 싶은 순간도.<br>당신의 이야기를 문장으로 엮어 드립니다.</p>
-    <button class="primary" onclick="document.querySelector('#create').scrollIntoView({behavior:'smooth'})">나만의 시 만들기　↗</button>
-  </div>
-  <div class="hero-art" aria-label="미망서재 토끼 우편배달부">
-  <div class="mascot-scene">
-    <div class="mascot-title">THE LITTLE LETTER POST</div>
-    <div class="rabbit-mascot">
-      <span class="rabbit-beret">✿</span>
-      <span class="rabbit-face">🐇</span>
-      <span class="rabbit-envelope">✉</span>
-    </div>
-    <div class="mascot-name">미망서재의 작은 우편배달부</div>
-    <div class="mascot-caption">A LETTER FOR YOUR HEART</div>
-  </div>
-</div>
-      <div class="hero-art" aria-label="미망서재 토끼 우편배달부">
-    <div class="mascot-scene">
-      <div class="mascot-title">THE LITTLE LETTER POST</div>
-      <div class="rabbit-mascot">
-        <span class="rabbit-beret">✿</span>
-        <span class="rabbit-face">🐇</span>
-        <span class="rabbit-envelope">✉</span>
-      </div>
-      <div class="mascot-name">미망서재의 작은 우편배달부</div>
-      <div class="mascot-caption">A LETTER FOR YOUR HEART</div>
-    </div>
-  </div>
-</section>
-</section>
+<main id="home">
+  <a class="hero-image-link" href="#create" aria-label="미망서재에서 나만의 시 만들기">
+    <img
+      src="/mimang-library.png"
+      alt="미망서재의 토끼 우편배달부와 오래된 서재"
+    >
+  </a>
 <section class="section" id="about">
   <div class="section-inner">
     <div class="section-head"><div class="eyebrow">ABOUT MIMANG</div><h2>잊지 않기 위해, 문장으로 남깁니다.</h2><p>미망(未忘)은 아직 잊지 못했다는 뜻입니다.<br>당신의 마음이 머물렀던 순간을 한 편의 시로 기록합니다.</p></div>
