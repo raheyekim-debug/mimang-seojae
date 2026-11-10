@@ -387,17 +387,243 @@ footer strong {
   color: #9a7651;
   margin-top: 9px;
 }
+
+/* ===== 미망서재 최종 디자인 ===== */
+
+body {
+  background: #783A32;
+  color: #F0DFC0;
+}
+
+.topline {
+  height: 6px;
+  background: #C49A58;
+}
+
+header {
+  background: linear-gradient(110deg, #542820, #702F2B, #542820);
+  border-bottom: 2px solid #C49A58;
+  color: #F0DFC0;
+  box-shadow: 0 5px 20px #160b0870;
+}
+
+.brand {
+  color: #F0DFC0;
+}
+
+.brand small,
+.nav a {
+  color: #D9BC91;
+}
+
+.nav a:hover {
+  color: #FFFFFF;
+}
+
+/* 메인 화면 */
+.hero {
+  width: 100%;
+  max-width: 1400px;
+  min-height: 610px;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 0;
+  padding: 0;
+  background: #EBD2AE;
+  color: #542820;
+  box-shadow: 0 15px 40px #170b0880;
+}
+
+.hero > div:first-child {
+  padding: 55px 25px 55px 7%;
+}
+
+.hero .eyebrow {
+  color: #8B493C;
+  letter-spacing: .2em;
+}
+
+.hero h1 {
+  color: #542820;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1.55;
+}
+
+.hero h1 em {
+  color: #8B493C;
+}
+
+.hero p {
+  color: #68483A;
+}
+
+.primary {
+  background: #762D2B;
+  border: 2px solid #C49A58;
+  color: #F0DFC0;
+  padding: 15px 28px;
+  box-shadow: 0 4px 12px #54282050;
+}
+
+.primary:hover {
+  background: #913E36;
+  border-color: #E1BD83;
+}
+
+/* 토끼 우편배달부 일러스트 */
+.hero-art {
+  height: 100%;
+  min-height: 610px;
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: #38251F;
+}
+
+.hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 610px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 소개 및 시 만들기 영역 */
+.section {
+  background: #783A32;
+  border-top: 1px solid #C49A58;
+  color: #F0DFC0;
+}
+
+.section:nth-of-type(even) {
+  background: #542820;
+}
+
+.section-head h2 {
+  color: #F0DFC0;
+}
+
+.section-head p {
+  color: #D2B99A;
+}
+
+.section-head .eyebrow {
+  color: #D7AD76;
+}
+
+/* 이용 방법 카드 */
+.how-card {
+  background: #F0DFC0;
+  border-top: 2px solid #C49A58;
+  color: #542820;
+}
+
+.how-card h3 {
+  color: #542820;
+}
+
+.how-card p {
+  color: #806750;
+}
+
+/* 시 작성 편지지 */
+.write-wrap {
+  background: #F0DFC0;
+  border: 2px solid #C49A58;
+  outline: 1px solid #A66B50;
+  box-shadow: 0 15px 35px #160a0830;
+}
+
+.field-label {
+  color: #542820;
+}
+
+.chip {
+  border-color: #B99C7B;
+  color: #795A43;
+}
+
+.chip.active,
+.chip:hover {
+  background: #762D2B;
+  border-color: #762D2B;
+  color: #F0DFC0;
+}
+
+/* 결과 시 */
+.result {
+  background: #E8D8BD;
+  border: 1px solid #C49A58;
+}
+
+.result h3,
+.poem {
+  color: #54342A;
+}
+
+/* 엽서 영역 */
+.postcard {
+  background: #EBD2AE;
+  border: 2px solid #C49A58;
+  color: #542820;
+}
+
+.postcard h2 {
+  color: #762D2B;
+}
+
+.postcard p {
+  color: #806750;
+}
+
+/* 하단 */
+footer {
+  background: #38251F;
+  border-top: 3px solid #C49A58;
+  color: #D2B99A;
+}
+
+footer strong {
+  color: #F0DFC0;
+}
+
+.toast {
+  background: #542820;
+  border: 1px solid #C49A58;
+}
+
+/* 모바일 */
+@media(max-width:720px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .hero > div:first-child {
+    padding: 50px 24px;
+    text-align: center;
+  }
+
+  .hero-art {
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .hero-art img {
+    min-height: 320px;
+  }
+}
+
 </style>
 </head>
 <body>
-<div class="topline"></div>
-<header>
-  <a href="#home" style="text-decoration:none;color:inherit"><div class="brand">미망서재<small>未忘書齋 · MIMANG LIBRARY</small></div></a>
-  <nav class="nav"><a href="#about">서재 소개</a><a href="#create">시 만들기</a><a href="#postcard">작품 소장</a></nav>
-</header>
-<main id="home">
-<section class="hero">
-  <div>
+<div class="hero-art">
+  <img src="/mimang-library-hero.jpg"
+       alt="미망서재의 토끼 우편배달부와 오래된 서재">
+</div>
     <div class="eyebrow">A POEM FROM YOUR STORY</div>
     <h1>당신의 이야기가<br><em>한 편의 시</em>가 되도록.</h1>
     <p>차마 꺼내지 못했던 마음도,<br>오래도록 간직하고 싶은 순간도.<br>당신의 이야기를 문장으로 엮어 드립니다.</p>
