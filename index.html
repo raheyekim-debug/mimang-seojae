@@ -695,6 +695,7 @@ const authStatus = document.getElementById('authStatus');
 const sendAuth = document.getElementById('sendAuth');
 
 sendAuth.addEventListener('click', async () => {
+  console.log('인증 버튼 이벤트 연결 완료');
   const email = authEmail.value.trim();
 
   if (!email) {
