@@ -50,6 +50,7 @@ export default async function handler(req, res) {
   let userId = null;
   let claimed = false;
   let completed = false;
+  let stage = '인증 확인';
 
   try {
     // 1. 이메일 인증 토큰 확인
@@ -64,6 +65,7 @@ export default async function handler(req, res) {
       });
     }
 
+    stage = 'Supabase 사용자 인증';
     const userResponse = await fetch(
       `${supabaseUrl}/auth/v1/user`,
       {
@@ -91,6 +93,7 @@ export default async function handler(req, res) {
     userId = user.id;
 
     // 2. 안전성 검사
+    stage = 'OpenAI 안전성 검사';
     const moderation = await fetch(
       'https://api.openai.com/v1/moderations',
       {
@@ -119,6 +122,7 @@ export default async function handler(req, res) {
     }
 
     // 3. 계정당 1회 생성 권한 확보
+    stage = 'Supabase 생성 권한 기록';
     const claimResponse = await fetch(
       `${supabaseUrl}/rest/v1/poem_generations`,
       {
@@ -150,6 +154,7 @@ export default async function handler(req, res) {
     claimed = true;
 
     // 4. AI 시 생성
+    stage = 'OpenAI 시 생성';
     const response = await fetch(
       'https://api.openai.com/v1/responses',
       {
@@ -215,12 +220,19 @@ ${story}`,
       poem: poemData.poem.slice(0, 2500)
     });
 
-  } catch (error) {
-    console.error('Poem endpoint error:', error.message);
+  
+} catch (error) {
+  console.error('Poem endpoint error:', {
+    stage: stage,
+    name: error.name,
+    message: error.message,
+    cause: error.cause
+  });
 
-    return res.status(503).json({
-      error: '현재 시를 만들 수 없어요. 잠시 후 다시 시도해 주세요.'
-    });
+  return res.status(503).json({
+    error: '현재 시를 만들 수 없어요. 잠시 후 다시 시도해 주세요.'
+  });
+
 
   } finally {
     // 생성 실패 시 사용 횟수 복구
