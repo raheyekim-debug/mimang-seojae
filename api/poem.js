@@ -224,11 +224,14 @@ ${story}`,
   
 } catch (error) {
   console.error('Poem endpoint error:', {
-    stage: stage,
-    name: error.name,
-    message: error.message,
-    cause: error.cause
-  });
+  stage,
+  name: error.name,
+  message: error.message,
+  cause: error.cause,
+  causeMessage: error.cause?.message,
+  causeCode: error.cause?.code,
+  causeHostname: error.cause?.hostname
+});
 
   return res.status(503).json({
     error: '현재 시를 만들 수 없어요. 잠시 후 다시 시도해 주세요.'
