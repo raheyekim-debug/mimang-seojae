@@ -92,22 +92,42 @@ export default async function handler(req, res) {
 
     userId = user.id;
 
+
     // 2. 안전성 검사
     stage = 'OpenAI 안전성 검사';
-    
-const moderationData = await moderation.json();
 
-console.log('Moderation result:', {
-  flagged: moderationData.results?.[0]?.flagged,
-  categories: moderationData.results?.[0]?.categories,
-  category_scores: moderationData.results?.[0]?.category_scores
-});
+    const moderation = await fetch(
+      'https://api.openai.com/v1/moderations',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${key}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'omni-moderation-latest',
+          input: story
+        })
+      }
+    );
 
-if (moderationData.results?.[0]?.flagged) {
-  return res.status(400).json({
-    error: '이 내용은 시 생성에 사용할 수 없어요.'
-  });
-}
+    if (!moderation.ok) {
+      throw new Error('moderation_unavailable');
+    }
+
+    const moderationData = await moderation.json();
+
+    console.log('Moderation result:', {
+      flagged: moderationData.results?.[0]?.flagged,
+      categories: moderationData.results?.[0]?.categories,
+      category_scores: moderationData.results?.[0]?.category_scores
+    });
+
+    if (moderationData.results?.[0]?.flagged) {
+      return res.status(400).json({
+        error: '이 내용은 시 생성에 사용할 수 없어요.'
+      });
+    }
 
 
     // 3. 계정당 1회 생성 권한 확보
