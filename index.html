@@ -742,14 +742,16 @@ if (!authEmail || !authStatus || !sendAuth) {
     }
   });
 
-  supabaseClient.auth.onAuthStateChange((event, session) => {
-    if (session) {
-      authStatus.textContent =
-        '이메일 인증 완료: ' + session.user.email;
-      sendAuth.disabled = true;
-    }
-  });
-}
+ supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (session) {
+    authStatus.textContent =
+      '이메일 인증 완료: ' + session.user.email;
+    sendAuth.disabled = true;
+  } else {
+    authStatus.textContent = '이메일 인증이 필요합니다.';
+    sendAuth.disabled = false;
+  }
+});
 
 let category='그리움';
 const $=s=>document.querySelector(s);
