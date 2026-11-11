@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -428,7 +429,7 @@ header {
   grid-template-columns: 0.9fr 1.1fr;
   gap: 0;
   padding: 0;
-  background: #EBD2AE;
+    background: #EBD2AE;
   color: #542820;
   box-shadow: 0 15px 40px #170b0880;
 }
@@ -616,7 +617,8 @@ footer strong {
     min-height: 320px;
   }
 }
-  /* 원본 미망서재 디자인 이미지 */
+
+/* 원본 미망서재 디자인 이미지 */
 .hero-image-link {
   display: block;
   width: 100%;
@@ -632,65 +634,648 @@ footer strong {
   height: auto;
 }
 
+/* ===== 미망서재 하단 디자인 통합 리뉴얼 ===== */
+:root {
+  --mimang-cream: #f2e5ce;
+  --mimang-paper: #ead8b9;
+  --mimang-gold: #c49a58;
+  --mimang-wine: #542820;
+  --mimang-red: #762d2b;
+  --mimang-brown: #6b4634;
+}
+
+/* 첫 화면 이미지는 기존 파일과 크롭을 그대로 유지 */
+.hero-image-link,
+.hero-image-link img { height: auto; }
+
+/* 섹션마다 깊이감과 여백 부여 */
+.section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(76px, 9vw, 116px) 24px;
+  overflow: hidden;
+}
+.section::before {
+  content: "✳";
+  position: absolute;
+  z-index: -1;
+  top: 24px;
+  right: clamp(18px, 7vw, 100px);
+  color: rgba(196,154,88,.16);
+  font-size: clamp(90px, 14vw, 170px);
+  line-height: 1;
+  pointer-events: none;
+}
+.section-inner { max-width: 980px; position: relative; }
+.section-head { margin-bottom: 58px; }
+.section-head .eyebrow {
+  display: inline-block;
+  padding: 7px 15px;
+  border: 1px solid rgba(196,154,88,.7);
+  letter-spacing: .24em;
+  font-size: 10px;
+}
+.section-head h2 {
+  font-size: clamp(27px, 4vw, 36px);
+  line-height: 1.6;
+  letter-spacing: -.055em;
+  margin-top: 19px;
+}
+.section-head p { line-height: 2.15; }
+
+/* 소개: 오래된 책장 속 세 권의 책 */
+#about {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,239,207,.12), transparent 58%),
+    linear-gradient(135deg, #783a32, #653027 55%, #542820);
+}
+#about .how-grid { gap: 22px; }
+#about .how-card {
+  position: relative;
+  min-height: 225px;
+  padding: 30px 25px 27px;
+  background: linear-gradient(145deg, #f5e9d3, #e7d3b2);
+  border: 1px solid #c49a58;
+  border-top: 4px solid #b8874c;
+  box-shadow: 0 12px 24px rgba(28,12,8,.2), inset 0 0 0 5px rgba(255,250,236,.34);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+#about .how-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 30px rgba(28,12,8,.28), inset 0 0 0 5px rgba(255,250,236,.34);
+}
+#about .how-card::after {
+  content: "";
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  bottom: 17px;
+  border-bottom: 1px solid rgba(137,81,59,.35);
+}
+#about .how-card .num {
+  display: inline-flex;
+  width: 39px;
+  height: 39px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #b8874c;
+  border-radius: 50%;
+  background: #762d2b;
+  color: #f2dfbd;
+  font-size: 17px;
+}
+#about .how-card h3 { margin: 19px 0 12px; font-size: 19px; }
+#about .how-card p { font-size: 12px; line-height: 2.05; }
+
+/* 시 만들기: 편지지와 장식 프레임 */
+#create {
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(196,154,88,.13), transparent 34%),
+    linear-gradient(135deg, #542820, #71352d 52%, #4b241e);
+}
+#create .write-wrap {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(25px, 5vw, 58px);
+  background: #f1e4cd;
+  border: 1px solid #c49a58;
+  outline: 1px solid rgba(196,154,88,.65);
+  outline-offset: 7px;
+  box-shadow: 0 22px 55px rgba(20,8,5,.32), inset 0 0 0 8px rgba(255,250,238,.35);
+}
+#create .write-wrap::before,
+#create .write-wrap::after {
+  position: absolute;
+  color: #b58b55;
+  font-size: 23px;
+  line-height: 1;
+  pointer-events: none;
+}
+#create .write-wrap::before { content: "❧"; top: 13px; left: 17px; }
+#create .write-wrap::after { content: "❧"; right: 17px; bottom: 13px; transform: rotate(180deg); }
+#create .write-wrap > div:first-child {
+  padding: 22px 23px !important;
+  margin-bottom: 34px !important;
+  background: #e8d6b8;
+  border: 1px solid #c5a477 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 0 0 4px rgba(255,250,238,.35);
+}
+#create input[type="email"] {
+  min-height: 45px;
+  background: #fffaf0;
+  border: 1px solid #c9b394 !important;
+  border-radius: 0 !important;
+  color: #493126;
+  padding: 12px 14px !important;
+}
+#create .write-wrap > div:first-child .primary {
+  padding: 11px 18px;
+  font-size: 12px;
+}
+#create .field-label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+  letter-spacing: -.02em;
+}
+#create .categories { gap: 10px; margin-bottom: 36px; }
+#create .chip {
+  min-width: 76px;
+  padding: 11px 18px;
+  border-radius: 2px;
+  background: rgba(255,250,240,.55);
+  transition: .2s ease;
+}
+#create .chip.active,
+#create .chip:hover { box-shadow: 0 3px 8px rgba(84,40,32,.16); }
+#create textarea {
+  min-height: 185px;
+  padding: 21px;
+  border: 1px solid #c9b394;
+  border-radius: 0;
+  background-color: #fffaf0;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(176,145,108,.16) 32px);
+  line-height: 2;
+}
+#create .hint { margin-bottom: 16px; }
+#create .style-row {
+  padding-top: 25px;
+  margin-top: 24px;
+  border-top: 1px solid #d3bea0;
+}
+#create .style-select { min-height: 40px; border-radius: 0; }
+#create .create {
+  margin-top: 8px;
+  min-height: 54px;
+  letter-spacing: .08em;
+  font-size: 14px;
+}
+#create .create:disabled { opacity: .65; cursor: wait; }
+
+/* 생성된 시: 실제 책의 속표지처럼 */
+#create .result {
+  margin-top: 42px;
+  padding: clamp(32px, 6vw, 64px) 24px;
+  background: #f7eedf;
+  border: 1px solid #b88c56;
+  outline: 1px solid rgba(184,140,86,.55);
+  outline-offset: 5px;
+  box-shadow: inset 0 0 0 8px rgba(201,174,133,.15), 0 12px 28px rgba(75,35,25,.12);
+}
+#create .result::after {
+  content: "—  ✳  —";
+  display: block;
+  margin-top: 34px;
+  color: #ad8654;
+  font-size: 13px;
+  letter-spacing: .3em;
+}
+#create .result h3 { font-size: 25px; letter-spacing: -.04em; }
+#create .poem { font-size: 16px; line-height: 2.55; }
+#create .result-actions { gap: 9px; }
+#create .result-actions .outline { background: rgba(255,255,255,.28); }
+
+/* 엽서 안내: 독립된 종이 카드 */
+#postcard {
+  background: linear-gradient(135deg, #783a32, #542820);
+}
+#postcard .postcard {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 76px) 30px;
+  background:
+    linear-gradient(rgba(241,226,199,.94), rgba(241,226,199,.94)),
+    repeating-linear-gradient(45deg, #c6aa83 0 1px, transparent 1px 8px);
+  border: 1px solid #c49a58;
+  outline: 1px solid rgba(196,154,88,.7);
+  outline-offset: 7px;
+  box-shadow: 0 18px 40px rgba(20,8,5,.24), inset 0 0 0 8px rgba(255,250,238,.35);
+}
+#postcard .postcard h2 { line-height: 1.65; }
+#postcard .postcard .eyebrow { letter-spacing: .25em; }
+#postcard .postcard .outline { padding: 13px 24px; background: #762d2b; color: #f2dfbd; border-color: #b8874c; }
+#postcard .postcard .outline:hover { background: #542820; }
+
+/* 푸터: 서재의 마지막 장 */
+footer {
+  position: relative;
+  padding: 55px 24px 48px;
+  background: #321d18;
+  border-top: 3px double #c49a58;
+  color: #cdb18b;
+}
+footer::before {
+  content: "✦  ·  ✦  ·  ✦";
+  display: block;
+  margin-bottom: 20px;
+  color: #bd9258;
+  letter-spacing: .45em;
+  font-size: 13px;
+}
+footer strong { font-size: 23px; letter-spacing: .2em; }
+
+/* 마우스·키보드 접근성 및 작은 화면 */
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid #d6ad70;
+  outline-offset: 3px;
+}
+@media (max-width: 720px) {
+  .section { padding: 68px 18px; }
+  .section-head { margin-bottom: 38px; }
+  #about .how-grid { grid-template-columns: 1fr; gap: 14px; }
+  #about .how-card { min-height: 0; padding: 24px 22px 29px; }
+  #create .write-wrap { padding: 27px 20px; outline-offset: 4px; }
+  #create .write-wrap > div:first-child { padding: 17px !important; }
+  #create .categories { gap: 8px; }
+  #create .chip { min-width: 0; padding: 10px 15px; }
+  #create .style-row { align-items: flex-start; }
+  #create .style-row .field-label { width: 100%; }
+  #create .style-select { width: 100%; }
+  #create .poem { font-size: 14px; line-height: 2.35; }
+  #postcard .postcard { padding: 48px 22px; }
+  footer { padding: 45px 18px 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ===== 미망서재 시안 반영: 장식과 편집 레이아웃 ===== */
+#about .section-head::after {
+  content: "─── ❧ ───";
+  display: block;
+  margin: 18px auto 0;
+  color: #d2ad75;
+  font-size: 18px;
+  letter-spacing: .18em;
+}
+#about .how-card {
+  text-align: center;
+  border: 1px solid #bd9258;
+  outline: 1px solid rgba(189,146,88,.45);
+  outline-offset: 4px;
+  padding-top: 26px;
+}
+#about .how-card .num {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  width: 28px;
+  height: 28px;
+  font-size: 11px;
+}
+#about .card-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 68px;
+  margin: 10px auto 8px;
+  color: #7b3a2d;
+  font-size: 39px;
+  filter: sepia(.35);
+  text-shadow: 1px 3px 0 rgba(116,70,42,.16);
+}
+#about .how-card h3 { margin-top: 5px; }
+#about .how-card p { max-width: 230px; margin: 0 auto; }
+
+#create .write-wrap {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, .42fr);
+  column-gap: 25px;
+  background:
+    radial-gradient(ellipse at 90% 75%, rgba(184,128,77,.16), transparent 38%),
+    linear-gradient(135deg, #f5e9d4, #ead5b5);
+}
+#create .form-content {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+}
+#create .writing-art {
+  position: relative;
+  z-index: 1;
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+  min-height: 420px;
+  margin: 4px -12px 4px 0;
+  border-left: 1px solid rgba(157,112,72,.35);
+  background:
+    linear-gradient(90deg, rgba(241,225,199,.05), rgba(120,69,46,.12)),
+    radial-gradient(ellipse at 50% 76%, rgba(104,59,39,.28), transparent 50%),
+    linear-gradient(180deg, #d7b991 0%, #f0dfc3 55%, #b58a61 100%);
+  box-shadow: inset 0 0 35px rgba(91,51,31,.18);
+}
+#create .writing-art::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(126,75,47,.4);
+  box-shadow: inset 0 0 0 5px rgba(255,245,224,.22);
+}
+#create .art-window {
+  position: absolute;
+  top: 32px;
+  right: 28px;
+  width: 95px;
+  height: 125px;
+  display: grid;
+  place-items: center;
+  color: #f7e8c8;
+  font-size: 55px;
+  border: 7px double #8c6247;
+  background:
+    linear-gradient(90deg, transparent 47%, #8c6247 48% 52%, transparent 53%),
+    linear-gradient(0deg, transparent 47%, #8c6247 48% 52%, transparent 53%),
+    linear-gradient(135deg, #a77b56, #e8c99a);
+  box-shadow: 0 7px 18px rgba(66,37,24,.2);
+}
+#create .art-flowers {
+  position: absolute;
+  top: 175px;
+  right: 28px;
+  color: #8e5944;
+  font-size: 33px;
+  letter-spacing: .1em;
+}
+#create .art-books {
+  position: absolute;
+  right: 18px;
+  bottom: 62px;
+  color: #71352d;
+  font-size: 36px;
+  letter-spacing: -.15em;
+  text-shadow: 0 5px 0 #c49a58, 0 10px 0 #5b3027;
+}
+#create .art-candle {
+  position: absolute;
+  right: 76px;
+  bottom: 100px;
+  color: #fff0ca;
+  font-size: 50px;
+  text-shadow: 0 0 16px #fff0ca, 0 5px 8px #6c3b2c;
+}
+#create .form-content > div:first-child {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 22px 23px !important;
+  margin-bottom: 34px !important;
+  background: #e8d6b8;
+  border: 1px solid #c5a477 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 0 0 4px rgba(255,250,238,.35);
+}
+#create input[type="email"] {
+  min-height: 45px;
+  background: #fffaf0;
+  border: 1px solid #c9b394 !important;
+  border-radius: 0 !important;
+  color: #493126;
+  padding: 12px 14px !important;
+}
+#create .form-content > div:first-child .primary {
+  padding: 11px 18px;
+  font-size: 12px;
+}
+#create .field-label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 14px;
+  letter-spacing: -.02em;
+}
+#create .categories { gap: 10px; margin-bottom: 36px; }
+#create .chip {
+  min-width: 76px;
+  padding: 11px 18px;
+  border-radius: 2px;
+  background: rgba(255,250,240,.55);
+  transition: .2s ease;
+}
+#create .chip.active,
+#create .chip:hover { box-shadow: 0 3px 8px rgba(84,40,32,.16); }
+#create textarea {
+  min-height: 185px;
+  padding: 21px;
+  border: 1px solid #c9b394;
+  border-radius: 0;
+  background-color: #fffaf0;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(176,145,108,.16) 32px);
+  line-height: 2;
+}
+#create .hint { margin-bottom: 16px; }
+#create .style-row {
+  padding-top: 25px;
+  margin-top: 24px;
+  border-top: 1px solid #d3bea0;
+}
+#create .style-select { min-height: 40px; border-radius: 0; }
+#create .create {
+  margin-top: 8px;
+  min-height: 54px;
+  letter-spacing: .08em;
+  font-size: 14px;
+}
+#create .create:disabled { opacity: .65; cursor: wait; }
+
+#create .result {
+  position: relative;
+  border: 9px solid #6b3b2b;
+  border-image: linear-gradient(135deg, #7c4a31, #c49a58, #5b3027) 1;
+  background:
+    linear-gradient(90deg, rgba(130,83,53,.08) 49.7%, rgba(92,52,35,.2) 50%, rgba(255,250,235,.2) 50.5%),
+    linear-gradient(135deg, #f7ecd9, #e8d4b5);
+  box-shadow: 0 15px 30px rgba(30,12,7,.22), inset 0 0 0 5px rgba(255,250,235,.5);
+}
+#create .result::before {
+  content: "MIMANG SEOJAE";
+  display: block;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(151,106,67,.35);
+}
+#create .book-page-mark {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  color: #a77c4c;
+  font-size: 28px;
+}
+#create .result h3 { margin-top: 28px; }
+
+#postcard .postcard::before { content: "✿"; left: 6%; top: 9%; }
+#postcard .postcard::after { content: "❧"; right: 6%; bottom: 8%; }
+#postcard .postcard {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255,250,235,.55), transparent 70%),
+    repeating-linear-gradient(45deg, rgba(169,128,82,.08) 0 1px, transparent 1px 8px),
+    #ead8b9;
+}
+.footer-seal {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 14px;
+  border: 1px solid #bd9258;
+  border-radius: 50%;
+  color: #e6c58e;
+  font-size: 22px;
+}
+.footer-rabbit {
+  display: block;
+  margin-top: 17px;
+  color: #d5b27e;
+  font-size: 18px;
+  letter-spacing: .5em;
+}
+@media (max-width: 760px) {
+  #create .write-wrap { display: block; }
+  #create .writing-art {
+    min-height: 150px;
+    height: 150px;
+    margin: 0 0 24px;
+    border-left: 0;
+    border-bottom: 1px solid rgba(157,112,72,.35);
+  }
+  #create .art-window { top: 14px; right: 22px; width: 72px; height: 100px; }
+  #create .art-flowers { top: 25px; right: 115px; }
+  #create .art-books { bottom: 12px; right: 16px; font-size: 25px; }
+  #create .art-candle { bottom: 20px; right: 70px; font-size: 35px; }
+  #about .how-card { text-align: center; }
+}
 </style>
 </head>
 <body>
+<div class="topline"></div>
+
 <main id="home">
   <a class="hero-image-link" href="#create" aria-label="미망서재에서 나만의 시 만들기">
-    <img
-      src="/mimang-library.png"
-      alt="미망서재의 토끼 우편배달부와 오래된 서재"
-    >
+    <img src="/mimang-library.png" alt="미망서재의 토끼 우편배달부와 오래된 서재">
   </a>
-<section class="section" id="about">
-  <div class="section-inner">
-    <div class="section-head"><div class="eyebrow">ABOUT MIMANG</div><h2>잊지 않기 위해, 문장으로 남깁니다.</h2><p>미망(未忘)은 아직 잊지 못했다는 뜻입니다.<br>당신의 마음이 머물렀던 순간을 한 편의 시로 기록합니다.</p></div>
-    <div class="how-grid">
-      <article class="how-card"><div class="num">01</div><h3>마음을 들려주세요</h3><p>그리움, 사랑, 우정, 가족. 어떤 이야기든 괜찮습니다. 편안하게 적어 주세요.</p></article>
-      <article class="how-card"><div class="num">02</div><h3>한 편의 시가 됩니다</h3><p>당신이 들려준 이야기에서 감정과 장면을 골라 시의 형태로 엮습니다.</p></article>
-      <article class="how-card"><div class="num">03</div><h3>오래도록 간직하세요</h3><p>마음에 드는 작품은 엽서로 만들어 책상 위나 소중한 사람에게 전할 수 있습니다.</p></article>
-    </div>
-  </div>
-</section>
-<section class="section" id="create">
-  <div class="section-inner">
-    <div class="section-head"><div class="eyebrow">YOUR OWN POEM</div><h2>나만의 시 만들기</h2><p>당신의 이야기를 들려주세요. 그 마음에 어울리는 문장을 시작해 볼게요.</p></div>
-    <div class="write-wrap">
-      <div style="margin-bottom:24px;padding:18px;border:1px solid #e5ded3;border-radius:12px;">
-  <label class="field-label">이메일 인증</label>
-  <input id="authEmail" type="email" placeholder="이메일 주소를 입력하세요" style="width:100%;padding:12px;margin:10px 0;border:1px solid #ddd;border-radius:8px;">
-  <button type="button" id="sendAuth" class="primary">인증 메일 보내기</button>
-  <p id="authStatus" class="note">시를 만들려면 이메일 인증이 필요합니다.</p>
-</div>
-      <label class="field-label">01. 어떤 마음을 담고 싶나요?</label>
-      <div class="categories" id="categories">
-        <button class="chip active" data-category="그리움">그리움</button><button class="chip" data-category="사랑">사랑</button><button class="chip" data-category="우정">우정</button><button class="chip" data-category="가족">가족</button><button class="chip" data-category="위로">위로</button><button class="chip" data-category="추억">추억</button>
+
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="eyebrow">ABOUT MIMANG</div>
+        <h2>당신의 이야기를 한 편의 시로</h2>
+        <p>마음속에 오래 머물던 이야기를 들려주세요.<br>미망서재가 그 마음을 글로 엮어 드립니다.</p>
       </div>
-      <label class="field-label" for="story">02. 당신의 이야기를 들려주세요.</label>
-      <textarea id="story" maxlength="500" placeholder="예) 오래전 함께 걷던 골목이 아직도 기억나요. 다시 만날 수 있을지 모르지만, 그때의 따뜻한 마음만은 잊고 싶지 않아요."></textarea>
-      <div class="hint"><span id="count">0</span> / 500자</div><p class="note" style="text-align:left">개인정보(실명, 전화번호, 주소 등)는 입력하지 마세요. 사연은 시 생성을 위해 AI 서비스로 전달되며 이 웹사이트에는 저장되지 않습니다.</p>
-      <div class="style-row"><span class="field-label">03. 시의 분위기</span><select class="style-select" id="style"><option value="고전적이고 서정적인">고전적이고 서정적인</option><option value="담백하고 짧은">담백하고 짧은</option><option value="깊고 사색적인">깊고 사색적인</option><option value="따뜻하고 다정한">따뜻하고 다정한</option></select></div>
-      <button class="primary create" id="makePoem">이야기를 시로 엮기　✳</button>
-      <div class="result" id="result"><div id="poemCategory" class="eyebrow" style="margin:18px 0 0"></div><h3 id="poemTitle"></h3><div class="poem" id="poemText"></div><div class="result-actions"><button class="outline" id="copyPoem">시 복사하기</button><button class="outline" id="savePoem">작품 저장하기</button><button class="outline" onclick="document.querySelector('#postcard').scrollIntoView({behavior:'smooth'})">엽서로 소장하기 ↗</button></div><div class="note">AI가 사연을 바탕으로 새롭게 작성한 작품입니다. 마음에 들지 않으면 분위기를 바꾸어 다시 만들어 보세요.</div></div>
+      <div class="how-grid">
+        <article class="how-card"><div class="num">01</div><div class="card-emblem" aria-hidden="true">📖</div><h3>마음을 들려주세요</h3><p>기억하고 싶은 순간이나<br>누군가에게 전하지 못한 마음을 적어주세요.</p></article>
+        <article class="how-card"><div class="num">02</div><div class="card-emblem" aria-hidden="true">🖋</div><h3>한 편의 시가 됩니다</h3><p>선택한 주제와 분위기에 맞춰<br>당신만의 시를 만들어 드립니다.</p></article>
+        <article class="how-card"><div class="num">03</div><div class="card-emblem" aria-hidden="true">✉</div><h3>오래도록 간직하세요</h3><p>완성된 시를 읽고 복사하거나<br>나중에 다시 꺼내 볼 수 있어요.</p></article>
+      </div>
     </div>
-  </div>
-</section>
-<section class="section" id="postcard">
-  <div class="section-inner"><div class="postcard"><div class="eyebrow">KEEP YOUR WORDS</div><h2>마음에 남은 문장을,<br>손에 잡히는 기억으로.</h2><p>당신만의 시를 종이 위에 담아 오래 간직할 수 있도록.<br>미망서재의 시 엽서는 준비 중입니다.</p><button class="outline" onclick="showToast('엽서 제작 및 주문 기능은 준비 중입니다.')">엽서 소장 안내</button></div></div>
-</section>
+  </section>
+
+  <section class="section" id="create">
+    <div class="section-inner">
+      <div class="section-head">
+        <div class="eyebrow">YOUR STORY, YOUR POEM</div>
+        <h2>오늘의 마음을 맡겨주세요</h2>
+        <p>짧은 이야기 한 조각이면 충분합니다.</p>
+      </div>
+
+      <div class="write-wrap">
+        <div class="writing-art" aria-hidden="true">
+          <span class="art-window">☼</span>
+          <span class="art-flowers">❀　✿</span>
+          <span class="art-books">▰ ▰ ▰</span>
+          <span class="art-candle">♜</span>
+        </div>
+
+        <div class="form-content">
+          <div style="margin-bottom:24px;padding:18px;border:1px solid #d7cbbb;background:#f8f2e7;">
+            <label class="field-label" for="authEmail">이메일 인증</label>
+            <input id="authEmail" type="email" placeholder="이메일 주소를 입력해 주세요">
+            <button class="primary" id="sendAuth" type="button">인증 메일 보내기</button>
+            <p id="authStatus" class="note">시를 만들기 전에 이메일 인증이 필요합니다.</p>
+          </div>
+
+          <label class="field-label">01. 어떤 마음을 담고 싶나요?</label>
+          <div class="categories" id="categories">
+            <button class="chip active" data-category="그리움" type="button">그리움</button>
+            <button class="chip" data-category="사랑" type="button">사랑</button>
+            <button class="chip" data-category="우정" type="button">우정</button>
+            <button class="chip" data-category="가족" type="button">가족</button>
+            <button class="chip" data-category="위로" type="button">위로</button>
+            <button class="chip" data-category="추억" type="button">추억</button>
+          </div>
+
+          <label class="field-label" for="story">02. 당신의 이야기를 들려주세요.</label>
+          <textarea id="story" maxlength="500" placeholder="예) 오래전 함께 걷던 골목이 문득 떠올랐어요. 그때는 평범했던 순간들이 지금은 참 소중하게 느껴집니다."></textarea>
+          <div class="hint"><span id="count">0</span> / 500자</div>
+          <p class="note" style="text-align:left">개인정보(실명, 전화번호, 주소 등)는 입력하지 마세요. 사연은 시 생성을 위해 AI 서비스로 전달됩니다.</p>
+
+          <div class="style-row">
+            <label class="field-label" for="style">03. 시의 분위기</label>
+            <select class="style-select" id="style">
+              <option value="고전적이고 서정적인">고전적이고 서정적인</option>
+              <option value="담백하고 짧은">담백하고 짧은</option>
+              <option value="깊고 사색적인">깊고 사색적인</option>
+              <option value="따뜻하고 다정한">따뜻하고 다정한</option>
+            </select>
+          </div>
+
+          <button class="primary create" id="makePoem" type="button">이야기를 시로 엮기　✳</button>
+          <div class="note">이메일 인증 계정당 시 생성은 1회로 제한됩니다.</div>
+        </div>
+      </div>
+
+      <div class="result" id="result">
+        <div class="book-page-mark" aria-hidden="true">❧</div>
+        <div id="poemCategory" class="eyebrow"></div>
+        <h3 id="poemTitle"></h3>
+        <div class="poem" id="poemText"></div>
+        <div class="result-actions">
+          <button class="outline" id="copyPoem" type="button">시 복사하기</button>
+          <button class="outline" id="savePoem" type="button">작품 저장하기</button>
+          <button class="outline" type="button" onclick="document.querySelector('#postcard').scrollIntoView({behavior:'smooth'})">엽서로 소장하기 ↗</button>
+        </div>
+        <div class="note">AI가 사연을 바탕으로 새롭게 작성한 작품입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="postcard">
+    <div class="section-inner">
+      <div class="postcard">
+        <div class="eyebrow">A LETTER TO KEEP</div>
+        <h2>마음에 남은 문장을<br>오래도록 간직할 수 있도록</h2>
+        <p>미망서재는 언젠가 당신의 시를<br>한 장의 아름다운 문학 엽서로 전할 예정입니다.</p>
+        <button class="outline" type="button" onclick="showToast('문학 엽서는 준비 중입니다.')">엽서 소식 기다리기</button>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><strong>미망서재</strong>未忘書齋 · MIMANG LIBRARY<br>당신의 이야기가 한 편의 시가 되도록.<br>© 2026 MIMANG LIBRARY. ALL RIGHTS RESERVED.</footer>
+
+<footer>
+  <div class="footer-seal" aria-hidden="true">✉</div>
+  <strong>미망서재</strong>
+  未忘書齋 · MIMANG LIBRARY<br>
+  당신의 이야기가 한 편의 시가 되도록.<br>
+  © 2026 MIMANG LIBRARY. ALL RIGHTS RESERVED.
+  <span class="footer-rabbit" aria-hidden="true">♧　🐇　♧</span>
+</footer>
+
 <div class="toast" id="toast"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = 'https://hwfoonrcvvtxpqyktstf.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_7Jshri7GTHLE4PP6hJh5AA_qAf1nnmE';
+/* 기존 Supabase 프로젝트 설정값을 그대로 사용하세요. */
+const SUPABASE_URL = '여기에 기존 SUPABASE_URL 입력';
+const SUPABASE_ANON_KEY = '여기에 기존 SUPABASE_ANON_KEY 입력';
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_ANON_KEY
 );
-
 
 const authEmail = document.getElementById('authEmail');
 const authStatus = document.getElementById('authStatus');
@@ -742,14 +1327,11 @@ sendAuth.addEventListener('click', async () => {
   try {
     const currentEmail = authSession?.user?.email?.toLowerCase();
 
-    // 기존 로그인 이메일과 입력한 이메일이 다르면
-    // 이전 로그인 세션만 해제합니다.
     if (currentEmail && currentEmail !== email.toLowerCase()) {
       const { error: signOutError } =
         await supabaseClient.auth.signOut({ scope: 'local' });
 
       if (signOutError) throw signOutError;
-
       authSession = null;
     }
 
@@ -767,7 +1349,6 @@ sendAuth.addEventListener('click', async () => {
 
   } catch (error) {
     console.error('이메일 인증 오류:', error);
-
     authStatus.textContent =
       '메일 발송 실패: ' +
       (error.message || '알 수 없는 오류가 발생했습니다.');
@@ -783,48 +1364,109 @@ supabaseClient.auth.onAuthStateChange((event, session) => {
   showAuthStatus();
 });
 
-let category='그리움';
-const $=s=>document.querySelector(s);
-$('#categories').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');category=b.dataset.category;});
-$('#story').addEventListener('input',()=>$('#count').textContent=$('#story').value.length);
-$('#makePoem').addEventListener('click', async()=>{
- const story=$('#story').value.trim();
- if(story.length<5){showToast('이야기를 조금만 더 들려주세요.');$('#story').focus();return;}
- const btn=$('#makePoem'); btn.disabled=true; btn.textContent='마음을 문장으로 엮고 있어요…';
- try {
-   const { data: { session } } = await supabaseClient.auth.getSession();
+let category = '그리움';
+const $ = s => document.querySelector(s);
 
-if (!session) {
-  showToast('먼저 이메일 인증을 완료해 주세요.');
-  return;
+$('#categories').addEventListener('click', e => {
+  const b = e.target.closest('.chip');
+  if (!b) return;
+
+  document.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  category = b.dataset.category;
+});
+
+$('#story').addEventListener('input', () => {
+  $('#count').textContent = $('#story').value.length;
+});
+
+$('#makePoem').addEventListener('click', async () => {
+  const story = $('#story').value.trim();
+
+  if (story.length < 5) {
+    showToast('이야기를 조금만 더 들려주세요.');
+    $('#story').focus();
+    return;
+  }
+
+  const btn = $('#makePoem');
+  btn.disabled = true;
+  btn.textContent = '마음을 문장으로 엮고 있어요…';
+
+  try {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+    if (!session) {
+      showToast('먼저 이메일 인증을 완료해 주세요.');
+      return;
+    }
+
+    const res = await fetch('/api/poem', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${session.access_token}`
+      },
+      body: JSON.stringify({
+        category,
+        story,
+        tone: $('#style').value
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || '시를 만들지 못했어요. 잠시 후 다시 시도해 주세요.');
+    }
+
+    $('#poemCategory').textContent = category + '의 기록';
+    $('#poemTitle').textContent = data.title;
+    $('#poemText').textContent = data.poem;
+    $('#result').classList.add('show');
+    $('#result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+  } catch (err) {
+    showToast(err.message || '연결에 실패했어요. 잠시 후 다시 시도해 주세요.');
+
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '이야기를 시로 엮기　✳';
+  }
+});
+
+function poemAll() {
+  return `미망서재 · ${$('#poemTitle').textContent}\n\n${$('#poemText').textContent}`;
 }
 
-const res = await fetch('/api/poem', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${session.access_token}`
-  },
-  body: JSON.stringify({
-    category,
-    story,
-    tone: $('#style').value
-  })
+$('#copyPoem').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(poemAll());
+    showToast('시를 복사했어요.');
+  } catch (e) {
+    showToast('복사가 지원되지 않는 환경입니다.');
+  }
 });
-   const data=await res.json();
-   if(!res.ok) throw new Error(data.error || '시를 만들지 못했어요. 잠시 후 다시 시도해 주세요.');
-   $('#poemCategory').textContent=category+'의 기록';
-   $('#poemTitle').textContent=data.title;
-   $('#poemText').textContent=data.poem;
-   $('#result').classList.add('show');
-   $('#result').scrollIntoView({behavior:'smooth',block:'center'});
- } catch(err) { showToast(err.message || '연결에 실패했어요. 잠시 후 다시 시도해 주세요.'); }
- finally { btn.disabled=false; btn.textContent='이야기를 시로 엮기　✳'; }
+
+$('#savePoem').addEventListener('click', () => {
+  const blob = new Blob([poemAll()], { type: 'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '미망서재_나의시.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast('작품 파일을 저장했어요.');
 });
-function poemAll(){return `미망서재 · ${$('#poemTitle').textContent}\n\n${$('#poemText').textContent}`}
-$('#copyPoem').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(poemAll());showToast('시를 복사했어요.')}catch(e){showToast('복사가 지원되지 않는 환경입니다.')}});
-$('#savePoem').addEventListener('click',()=>{const blob=new Blob([poemAll()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='미망서재_나의시.txt';a.click();URL.revokeObjectURL(a.href);showToast('작품 파일을 저장했어요.');});
-let toastTimer;function showToast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+
+let toastTimer;
+
+function showToast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
 </script>
 </body>
 </html>
