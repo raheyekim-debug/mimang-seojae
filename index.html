@@ -709,7 +709,12 @@ if (!authEmail || !authStatus || !sendAuth) {
     sendAuth.disabled = true;
     authStatus.textContent = '인증 메일을 보내고 있어요.';
 
-    try {
+    try { // 기존 이메일 로그인 세션 해제
+  const { error: signOutError } =
+    await supabaseClient.auth.signOut({ scope: 'local' });
+
+  if (signOutError) throw signOutError;
+
       const { data, error } =
         await supabaseClient.auth.signInWithOtp({
           email: email,
