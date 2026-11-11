@@ -120,6 +120,7 @@ export default async function handler(req, res) {
         error: '이 내용은 시 생성에 사용할 수 없어요.'
       });
     }
+    console.log('Moderation result:', moderationData.results?.[0]);
 
     // 3. 계정당 1회 생성 권한 확보
     stage = 'Supabase 생성 권한 기록';
