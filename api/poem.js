@@ -94,33 +94,21 @@ export default async function handler(req, res) {
 
     // 2. 안전성 검사
     stage = 'OpenAI 안전성 검사';
-    const moderation = await fetch(
-      'https://api.openai.com/v1/moderations',
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${key}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'omni-moderation-latest',
-          input: story
-        })
-      }
-    );
+    
+const moderationData = await moderation.json();
 
-    if (!moderation.ok) {
-      throw new Error('moderation_unavailable');
-    }
+console.log('Moderation result:', {
+  flagged: moderationData.results?.[0]?.flagged,
+  categories: moderationData.results?.[0]?.categories,
+  category_scores: moderationData.results?.[0]?.category_scores
+});
 
-    const moderationData = await moderation.json();
+if (moderationData.results?.[0]?.flagged) {
+  return res.status(400).json({
+    error: '이 내용은 시 생성에 사용할 수 없어요.'
+  });
+}
 
-    if (moderationData.results?.[0]?.flagged) {
-      return res.status(400).json({
-        error: '이 내용은 시 생성에 사용할 수 없어요.'
-      });
-    }
-    console.log('Moderation result:', moderationData.results?.[0]);
 
     // 3. 계정당 1회 생성 권한 확보
     stage = 'Supabase 생성 권한 기록';
