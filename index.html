@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -1150,6 +1149,345 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   #about .how-card { text-align: center; }
 }
 </style>
+/* ===== 미망서재 디자인 최종 수정 ===== */
+
+:root {
+  --paper: #eee2ce;
+  --paper-light: #f7eedf;
+  --burgundy: #572820;
+  --wine: #762f2c;
+  --gold: #c49a58;
+  --brown: #60402f;
+  --muted: #8b725c;
+}
+
+/* 전체 색상 */
+body {
+  background: var(--paper);
+  color: var(--brown);
+}
+
+/* 토끼 메인 이미지: 원본 그대로 */
+.hero-image-link {
+  display: block;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  line-height: 0;
+}
+
+.hero-image-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ABOUT */
+#about {
+  background: var(--paper);
+  color: var(--brown);
+  padding: 95px 24px;
+}
+
+#about .section-head h2 {
+  color: var(--burgundy);
+}
+
+#about .section-head p {
+  color: var(--muted);
+}
+
+#about .how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+#about .how-card {
+  position: relative;
+  min-height: 235px;
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(145deg, #fbf3e5, #e6d4b7);
+  border: 1px solid var(--gold);
+  box-shadow: 0 9px 22px #4b2b1818;
+}
+
+#about .how-card .num {
+  color: var(--wine);
+}
+
+#about .card-emblem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  margin: 10px auto;
+  font-size: 40px;
+}
+
+#about .how-card h3 {
+  color: var(--burgundy);
+}
+
+#about .how-card p {
+  color: var(--muted);
+  line-height: 2;
+}
+
+/* 글쓰기 영역 */
+#create {
+  background: linear-gradient(135deg, #542820, #783a32);
+  padding: 95px 24px;
+}
+
+#create .section-head h2 {
+  color: #f4e5ca;
+}
+
+#create .section-head p {
+  color: #d9bd99;
+}
+
+#create .write-wrap {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(210px, .8fr);
+  gap: 28px;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 38px;
+  background: linear-gradient(135deg, #f5ead6, #e8d5b7);
+  border: 2px solid var(--gold);
+  box-shadow: 0 18px 40px #1c0c0870;
+  overflow: hidden;
+}
+
+/* 오른쪽 장식 일러스트 */
+#create .write-wrap > .writing-art {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  display: block;
+  min-height: 440px;
+  height: 100%;
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0;
+  background:
+    linear-gradient(#54282022, #54282022),
+    linear-gradient(180deg, #c9a77e, #f0dfc3 55%, #a77b55);
+  box-shadow: inset 0 0 35px #54301e35;
+}
+
+/* 창문 */
+#create .art-window {
+  position: absolute;
+  top: 35px;
+  right: 25px;
+  width: 105px;
+  height: 145px;
+  display: grid;
+  place-items: center;
+  border: 8px double #81583d;
+  background:
+    linear-gradient(90deg, transparent 47%, #81583d 48% 52%, transparent 53%),
+    linear-gradient(0deg, transparent 47%, #81583d 48% 52%, transparent 53%),
+    linear-gradient(135deg, #d9b987, #f3dfb9);
+  color: #fff0ce;
+  font-size: 45px;
+}
+
+/* 꽃 */
+#create .art-flowers {
+  position: absolute;
+  top: 190px;
+  right: 35px;
+  color: #864d42;
+  font-size: 36px;
+}
+
+/* 책 */
+#create .art-books {
+  position: absolute;
+  bottom: 65px;
+  right: 20px;
+  color: #71352d;
+  font-size: 37px;
+  text-shadow: 0 5px 0 #c49a58, 0 10px 0 #573027;
+}
+
+/* 촛불 */
+#create .art-candle {
+  position: absolute;
+  bottom: 105px;
+  right: 90px;
+  color: #fff0c9;
+  font-size: 55px;
+  text-shadow: 0 0 17px #fff0c9;
+}
+
+/* 왼쪽 입력 폼 */
+#create .form-content {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+#create .form-content > div:first-child {
+  margin-bottom: 30px !important;
+  padding: 22px !important;
+  background: #e9d8bb !important;
+  border: 1px solid #bd9b70 !important;
+  border-radius: 0 !important;
+}
+
+#create .field-label {
+  color: var(--burgundy);
+}
+
+#create input[type="email"],
+#create textarea,
+#create .style-select {
+  border: 1px solid #c7ad89;
+  border-radius: 0;
+  background: #fffaf0;
+  color: #493126;
+}
+
+#create textarea {
+  min-height: 185px;
+  line-height: 2;
+  padding: 20px;
+}
+
+#create .chip {
+  border-radius: 2px;
+  border-color: #b99c7b;
+  color: #795a43;
+}
+
+#create .chip.active {
+  background: var(--wine);
+  color: #fff0d5;
+  border-color: var(--wine);
+}
+
+#create .primary {
+  background: var(--wine);
+  color: #f7ead4;
+  border: 1px solid var(--gold);
+}
+
+/* 완성된 시: 펼쳐진 책 */
+#create .result {
+  margin-top: 48px;
+  padding: 55px 35px;
+  background:
+    linear-gradient(
+      90deg,
+      #f7eedf 0%,
+      #f1e4ce 48.8%,
+      #c5a984 49.7%,
+      #e1ceb0 50.3%,
+      #f7eedf 51.2%,
+      #f7eedf 100%
+    );
+  border: 2px solid #a77b4e;
+  box-shadow:
+    0 15px 35px #24120d45,
+    inset 0 0 20px #b99b7228;
+}
+
+#create .result h3,
+#create .poem {
+  color: #503328;
+}
+
+#create .poem {
+  line-height: 2.5;
+}
+
+/* 엽서 */
+#postcard {
+  background: var(--paper);
+  padding: 90px 24px;
+}
+
+#postcard .postcard {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 65px 30px;
+  background: #f5ead6;
+  border: 2px solid var(--gold);
+  box-shadow: inset 0 0 0 7px #e8d5b7;
+}
+
+#postcard .postcard h2 {
+  color: var(--burgundy);
+}
+
+#postcard .postcard p {
+  color: var(--muted);
+}
+
+/* 푸터 */
+footer {
+  padding: 55px 24px;
+  background: #38211c;
+  border-top: 3px solid var(--gold);
+  color: #d9bd99;
+}
+
+footer strong {
+  color: #f1dfbd;
+}
+
+/* 모바일 */
+@media (max-width: 720px) {
+  #about .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #create .write-wrap {
+    display: flex !important;
+    flex-direction: column;
+    padding: 22px;
+  }
+
+  #create .writing-art {
+    order: 0;
+    min-height: 190px;
+    height: 190px;
+  }
+
+  #create .form-content {
+    order: 1;
+  }
+
+  #create .art-window {
+    top: 15px;
+    right: 25px;
+    width: 75px;
+    height: 110px;
+  }
+
+  #create .art-flowers {
+    top: 30px;
+    right: 125px;
+  }
+
+  #create .art-books {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  #create .art-candle {
+    bottom: 20px;
+    right: 80px;
+  }
+}
 </head>
 <body>
 <div class="topline"></div>
@@ -1269,8 +1607,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /* 기존 Supabase 프로젝트 설정값을 그대로 사용하세요. */
-const SUPABASE_URL = 'SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://hwfoonrcvvtxpqyktstf.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_7Jshri7GTHLE4PP6hJh5AA_qAf1nnmE';
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
